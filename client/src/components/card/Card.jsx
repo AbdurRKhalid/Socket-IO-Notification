@@ -9,8 +9,13 @@ import { useState } from 'react';
 const Card = ({ post, socket, user }) => {
     const [liked, setLiked] = useState(false);
 
-    const handleNotification = () => {
+    const handleNotification = (type) => {
         setLiked(true);
+        socket.emit("sendNotification", {
+            senderName: user,
+            receiverName: post.username,
+            type
+        })
     }
 
     if (!post) {
@@ -26,10 +31,10 @@ const Card = ({ post, socket, user }) => {
             <div className="interaction">
                 {
                     liked ? (<img src={FilledHeart} className='cardIcon' />) :
-                        <img src={Heart} className='cardIcon' onClick={handleNotification}/>
+                        <img src={Heart} className='cardIcon' onClick={() => handleNotification(1)}/>
                 }
-                <img src={Comment} className='cardIcon'/>
-                <img src={Share} className='cardIcon'/>
+                <img src={Comment} className='cardIcon' onClick={() => handleNotification(2)}/>
+                <img src={Share} className='cardIcon' onClick={() => handleNotification(3)}/>
                 <img src={Info} className='cardIcon'/>
             </div>
         </div>

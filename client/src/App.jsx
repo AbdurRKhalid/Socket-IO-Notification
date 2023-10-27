@@ -11,11 +11,10 @@ const App = () => {
   const [socket, setSocket] = useState(null);
   useEffect(() => {
     setSocket(io("http://localhost:5000"));
-
   }, []);
 
   useEffect(() => {
-    socket.emit("newUser", user)
+    socket?.emit("newUser", user)
   }, [socket, user]);
 
   return (
