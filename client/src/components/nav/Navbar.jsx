@@ -3,7 +3,7 @@ import Notification from '../../img/notification.svg';
 import Message from '../../img/message.svg';
 import Settings from '../../img/settings.svg';
 
-function Navbar() {
+function Navbar({ socket }) {
     return(
         <div className="navbar">
             <span className='log'>Lama Logo</span>

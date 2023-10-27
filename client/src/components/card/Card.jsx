@@ -6,7 +6,7 @@ import Comment from '../../img/comment.svg';
 import FilledHeart from '../../img/heartFilled.svg';
 import { useState } from 'react';
 
-const Card = ({ post }) => {
+const Card = ({ post, socket, user }) => {
     const [liked, setLiked] = useState(false);
 
     const handleNotification = () => {
